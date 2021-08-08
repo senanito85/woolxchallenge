@@ -1,0 +1,13 @@
+stages:   
+  - deploy
+
+deploy-job:     
+  stage: deploy  
+  tags: 
+  - woolx
+  script:
+    - echo "Deploying application..."
+    - sed -i "s/APIKEYVAL/$APIKEY/g" application.yaml
+    - kubectl apply -f application.yaml
+
+
